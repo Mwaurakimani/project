@@ -2,11 +2,13 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+    private $path = './database/seeders/SeederFiles';
+
     /**
      * Seed the application's database.
      *
@@ -14,11 +16,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->seed_users();
+    }
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+    public function seed_users()
+    {
+
+        $file = file_get_contents($this->path . "/users.json");
+        $data = json_decode($file);
+        $users = $data->data;
+
+
+        foreach ($users as $key => $user_properties) {
+            $user_model = new User();
+
+            foreach ($user_properties as $key => $value) {
+                if ($key == 'password') {
+                    $user_model->{$key} = bcrypt($value);
+                    continue;
+                }
+                $user_model->{$key} = $value;
+            }
+
+            $user_model->save();
+        }
     }
 }

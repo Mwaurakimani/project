@@ -1,33 +1,22 @@
 <template>
-    <Layout :active_page="'Dashboard'">
+    <Layout :active_page="'Departments'">
         <div class="main-body">
             <page-header/>
             <div class="page-heading">
-                <h1>Dashboard</h1>
-                <div class="bread-crumbs">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Library</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Data</li>
-                        </ol>
-                    </nav>
-                </div>
+                <h1>Departments</h1>
             </div>
 
             <div class="form-action-tab">
                 <div class="action-button-wrapper">
-                    <button>Add New</button>
-                    <button>Add New</button>
-                    <button>Add New</button>
+                    <button>Add Department</button>
                 </div>
             </div>
 
-<!--            <action-bar/>-->
+<!--                        <action-bar/>-->
 
             <div class="table-bolder">
                 <div class="table-header">
-                    <h4>Table Heading</h4>
+                    <h4>Users List</h4>
                     <div class="table-pagination">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
@@ -43,29 +32,33 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Dep ID</th>
+                        <th scope="col"> Name</th>
+                        <th scope="col"> Manager</th>
+                        <th scope="col"> Location</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
+                    <tr v-for="i in 10">
+                        <th scope="row" style="width: 80px !important" class="text-center"  >1</th>
+                        <td>test</td>
+                        <td>test</td>
+                        <td class="table-action-cell">
+                            <div class="holder">
+                                <div class="view-action">
+                                    <img src="/storage/icons/icons8-external-link-96-blue.png"
+                                    onmouseover="this.src='/storage/icons/icons8-external-link-96.png'"
+                                    onmouseout="this.src='/storage/icons/icons8-external-link-96-blue.png'"
+                                    title="edit">
+                                </div>
+                                <div class="delete-action">
+                                    <img src="/storage/icons/icons8-trash-can-96-red.png"
+                                    onmouseover="this.src='/storage/icons/icons8-trash-can-96-white.png'"
+                                    onmouseout="this.src='/storage/icons/icons8-trash-can-96-red.png'"
+                                    title="delete">
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
@@ -77,10 +70,16 @@
 </template>
 
 <script>
-import ActionBar from "../AppComponents/PageComponents/ActionBar.vue";
+import ActionBar from "../../../AppComponents/PageComponents/ActionBar.vue";
 
 export default {
-    name: "Dashboard",
+    name: "Users",
+    props:{
+        users:{
+            type: Array,
+            default: []
+        }
+    },
     components: {ActionBar},
 }
 </script>
@@ -208,19 +207,34 @@ export default {
                 border: none;
                 font-size: 0.95em;
             }
+            th:last-of-type{
+                width: 150px;
+                text-align: center;
+            }
         }
     }
 
     tbody {
         color: #494949;
         tr{
+            cursor: pointer;
             border-bottom: 1px solid #e8e8e8;
             th{
+                line-height: 30px;
                 border-bottom: none;
             }
             td{
+                line-height: 30px;
+                height: 30px;
                 border-bottom: none;
+                vertical-align: center;
             }
+
+            &:hover{
+                color: white;
+                background-color: #a0caf3;
+            }
+
         }
     }
 }

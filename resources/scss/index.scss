@@ -1,0 +1,45 @@
+button{
+    border-radius: 5px;
+    padding: 10px;
+    height: 40px;
+    border: 1px solid transparent;
+    line-height: 20px;
+    &:hover{
+        border: 1px solid dodgerblue;
+        color: dodgerblue;
+    }
+    &:active{
+        background-color: dodgerblue;
+        color: white;
+    }
+}
+
+.main-body{
+    background-color: #f8f8f8;
+}
+
+.table-action-cell{
+    width: 150px;
+    .holder{
+        display: flex;
+        height: 25px;
+        justify-content: center;
+        margin: 0px !important;
+
+        &>div{
+            width: 26px;
+            height: 25px;
+            padding: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .view-action{
+            margin: 0 20px 0 0;
+        }
+        .delete-action{
+            padding: 1px;
+        }
+    }
+}

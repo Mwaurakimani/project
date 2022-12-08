@@ -4,19 +4,19 @@
             <div class="background-effect">
 
             </div>
-            <form class="login-section">
+            <form class="login-section" onsubmit="event.preventDefault()">
                 <h1>Log In</h1>
                 <div >
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-<!--                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+                    <input v-model="form.email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text text-red-400">{{ $attrs.errors ? $attrs.errors.email : '' }}</div>
                 </div>
                 <div class="mb-[30px]">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-<!--                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+                    <input v-model="form.password" type="password" class="form-control" id="exampleInputPassword1">
+                    <div id="emailHelp" class="form-text text-red-400">{{ $attrs.errors ? $attrs.errors.password : '' }}</div>
                 </div>
-                <button type="submit" class="btn bg-primary text-white">Submit</button>
+                <button @click="login" class="btn bg-primary text-white">Submit</button>
             </form>
         </div>
     </div>
@@ -24,14 +24,26 @@
 
 <script>
 import {useStore} from "../Pinia/Store";
+import {reactive} from "vue";
+import {Inertia} from "@inertiajs/inertia";
 
 export default {
     name: "Welcome",
     setup() {
         const store = useStore();
+        const form = reactive(({
+            email:null,
+            password:null,
+            remember: 'on',
+        }))
         let cot = store.count;
 
-        return {cot}
+        return {cot,form}
+    },
+    methods:{
+        login(){
+            Inertia.post(route('login'),this.form)
+        }
     }
 }
 </script>
