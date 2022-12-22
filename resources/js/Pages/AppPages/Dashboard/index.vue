@@ -1,73 +1,10 @@
 <template>
-    <Layout>
+    <Layout page_props="page_props">
         <div class="main-body">
-            <page-header/>
+            <page-header :attrs="$attrs" />
             <div class="page-heading">
                 <h1>Dashboard</h1>
             </div>
-
-<!--            <div class="form-action-tab">-->
-<!--                <div class="action-button-wrapper">-->
-<!--                    <button>Add User</button>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--&lt;!&ndash;                        <action-bar/>&ndash;&gt;-->
-
-<!--            <div class="table-bolder">-->
-<!--                <div class="table-header">-->
-<!--                    <h4>Users List</h4>-->
-<!--                    <div class="table-pagination">-->
-<!--                        <nav aria-label="Page navigation example">-->
-<!--                            <ul class="pagination">-->
-<!--                                <li class="page-item "><a class="page-link" href="#">&laquo;</a></li>-->
-<!--                                <li class="page-item"><a class="page-link active-page" href="#">1</a></li>-->
-<!--                                <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-<!--                                <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-<!--                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>-->
-<!--                            </ul>-->
-<!--                        </nav>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <table class="table">-->
-<!--                    <thead>-->
-<!--                    <tr>-->
-<!--                        <th scope="col">ID</th>-->
-<!--                        <th scope="col">First</th>-->
-<!--                        <th scope="col">Last</th>-->
-<!--                        <th scope="col">Email</th>-->
-<!--                        <th scope="col">Designation</th>-->
-<!--                        <th scope="col">Action</th>-->
-<!--                    </tr>-->
-<!--                    </thead>-->
-<!--                    <tbody>-->
-<!--                    <tr v-for="user in users">-->
-<!--                        <th scope="row">{{ user.id }}</th>-->
-<!--                        <td>{{ user.first_name }}</td>-->
-<!--                        <td>{{ user.last_name }}</td>-->
-<!--                        <td>{{ user.email }}</td>-->
-<!--                        <td>{{ user.designstion }}</td>-->
-<!--                        <td class="table-action-cell">-->
-<!--                            <div class="holder">-->
-<!--                                <div class="view-action">-->
-<!--                                    <img src="/storage/icons/icons8-external-link-96-blue.png"-->
-<!--                                    onmouseover="this.src='/storage/icons/icons8-external-link-96.png'"-->
-<!--                                    onmouseout="this.src='/storage/icons/icons8-external-link-96-blue.png'"-->
-<!--                                    title="edit">-->
-<!--                                </div>-->
-<!--                                <div class="delete-action">-->
-<!--                                    <img src="/storage/icons/icons8-trash-can-96-red.png"-->
-<!--                                    onmouseover="this.src='/storage/icons/icons8-trash-can-96-white.png'"-->
-<!--                                    onmouseout="this.src='/storage/icons/icons8-trash-can-96-red.png'"-->
-<!--                                    title="delete">-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </td>-->
-<!--                    </tr>-->
-<!--                    </tbody>-->
-<!--                </table>-->
-<!--            </div>-->
-
         </div>
     </Layout>
 
@@ -77,7 +14,10 @@
 import ActionBar from "../../../AppComponents/PageComponents/ActionBar.vue";
 
 export default {
-    name: "Users",
+    name: "Dashboard",
+    provide:{
+        tab_name:'Dashboard'
+    },
     props:{
         users:{
             type: Array,

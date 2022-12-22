@@ -1,0 +1,22 @@
+table {
+    background-color: v-bind(color);
+    thead {
+        th:last-of-type {
+            width: 150px;
+            text-align: center;
+        }
+    }
+
+    tbody {
+        tr {
+            td {
+                line-height: 30px;
+                height: 30px;
+                border-bottom: none;
+                vertical-align: center;
+            }
+        }
+    }
+}
+
+

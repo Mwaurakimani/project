@@ -4,10 +4,7 @@
             <img src="/storage/logo.png">
         </div>
         <ul class="button-section">
-            <Link as="li" :href="route('dashboard')"  class="active-page">Dashboard</Link>
-            <Link as="li" :href="route('listIncidents')" >Incidents</Link>
-            <Link as="li" :href="route('departments')" >Departments</Link>
-            <Link as="li" :href="route('ListUsers')" >Users</Link>
+            <Link v-for="button in buttons" as="li" :href="route(button.link)" :class="[button.sub ? 'sub-button' : '',button.title === tab_name ? 'active-page':'']">{{button.title}}</Link>
         </ul>
     </div>
 </template>
@@ -16,24 +13,82 @@ import { Link } from '@inertiajs/inertia-vue3'
 
 export default {
     props:['active_bar'],
+    inject:['tab_name'],
     name: 'side-bar',
     components: {
         Link
     },
-    mounted() {
-        let activePage = this.active_bar;
-
-        let sideButtons = $('.side-bar .button-section').find("li")
-
-        for (let button of sideButtons){
-
-            if(activePage == button.innerHTML){
-                button.classList.add('active-page')
-            }else {
-                button.classList.remove('active-page')
-            }
+    data(){
+        return {
+            buttons: [
+                {
+                    title:'Dashboard',
+                    link:'dashboard',
+                    sub:false,
+                },
+                {
+                    title:'Accounts',
+                    link:'Accounts',
+                    sub:false
+                },
+                {
+                    title:'Admin',
+                    link:'Admins',
+                    sub:true
+                },
+                {
+                    title:'Agents',
+                    link:'Agents',
+                    sub:true
+                },
+                {
+                    title:'Tenants',
+                    link:'Tenants',
+                    sub:true
+                },
+                {
+                    title:'Block',
+                    link:'Blocks',
+                    sub:false
+                },
+                {
+                    title:'Houses',
+                    link:'Houses',
+                    sub:true
+                },
+                {
+                    title:'Services',
+                    link:'Services',
+                    sub:false
+                },
+                {
+                    title:'Events',
+                    link:'Events',
+                    sub:false
+                },
+                {
+                    title:'Finance',
+                    link:'Finances',
+                    sub:false
+                },
+                {
+                    title:'Arrears',
+                    link:'Arrears',
+                    sub:true
+                },
+                {
+                    title:'Deposits',
+                    link:'Deposits',
+                    sub:true
+                },
+                {
+                    title:'Payments',
+                    link:'Payments',
+                    sub:true
+                },
+            ]
         }
-    }
+    },
 }
 </script>
 <style scoped lang="scss">
@@ -75,6 +130,13 @@ export default {
         .active-page {
             background-color: dodgerblue;
         }
+    }
+}
+
+.sub-button{
+    padding-left: 50px !important;
+    &::before{
+        content: '| ';
     }
 }
 

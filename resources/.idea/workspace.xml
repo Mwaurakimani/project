@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5190fe3e-9011-4c95-ad4f-ae005a770814" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../app/timer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Accounts/Agents/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Accounts/Components/AccountActionTab.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Accounts/CreateUser.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Accounts/Tenants/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Blocks/Components/BlockActionTab.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Blocks/Components/HouseActionTab.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Blocks/CreateBlock.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Blocks/Houses/CreateHouse.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Blocks/Houses/UpdateHouse.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Blocks/Houses/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Blocks/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Events/Components/EventActionTab.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Events/CreateEvent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Events/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Fianance/Arrears/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Fianance/Components/FinanceActionTab.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Fianance/Deposits/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Fianance/Payment/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Fianance/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Services/Components/ServiceActionTab.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Services/CreateService.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/Pages/AppPages/Services/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../routes/webRoutes/BackEndSystem/Accounts/Admins/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../routes/webRoutes/BackEndSystem/Accounts/Agents/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../routes/webRoutes/BackEndSystem/Accounts/Tenants/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../routes/webRoutes/BackEndSystem/Accounts/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../routes/webRoutes/BackEndSystem/Blocks/Houses/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../routes/webRoutes/BackEndSystem/Blocks/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../routes/webRoutes/BackEndSystem/Dashboard/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../routes/webRoutes/BackEndSystem/Events/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../routes/webRoutes/BackEndSystem/Finances/Arrears/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../routes/webRoutes/BackEndSystem/Finances/Deposits/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../routes/webRoutes/BackEndSystem/Finances/Payments/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../routes/webRoutes/BackEndSystem/Finances/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../routes/webRoutes/BackEndSystem/Services/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../routes/webRoutes/BackEndSystem/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/UsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/Logic/Classes/Event.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/Logic/Classes/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Logic/Classes/Template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/Models/Event.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/Providers/FortifyServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Providers/FortifyServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/../composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/../database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/migrations/2022_12_08_080023_create_events_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/../database/migrations/2022_12_08_080023_create_events_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/../database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/seeders/SeederFiles/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/../database/seeders/SeederFiles/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/AppComponents/LayoutComponents/PageHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/js/AppComponents/LayoutComponents/PageHeader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/AppComponents/LayoutComponents/SideBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/js/AppComponents/LayoutComponents/SideBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/AppComponents/Modal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/js/AppComponents/Modal.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Components/ApplicationLogo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/js/Components/ApplicationLogo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Components/ApplicationMark.vue" beforeDir="false" afterPath="$PROJECT_DIR$/js/Components/ApplicationMark.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Components/AuthenticationCardLogo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/js/Components/AuthenticationCardLogo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Components/InputLabel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/js/Components/InputLabel.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Layouts/Layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/js/Layouts/Layout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Pages/AppPages/Dashboard/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/js/Pages/AppPages/Dashboard/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Pages/AppPages/Department/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/js/Pages/AppPages/Accounts/Admin/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Pages/AppPages/Incidents/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Pages/AppPages/Users/Components/UserCreateModal.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Pages/AppPages/Users/Components/testComponentModal.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Pages/AppPages/Users/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/js/Pages/AppPages/Accounts/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Pages/AppPages/Users/res/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Pages/AppPages/Users/res/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/js/Pages/AppPages/Accounts/res/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Pages/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/js/Pages/Dashboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/scss/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/web.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2JGSPujWP1qGrZHQEyPootEAzNF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/wamp64/www/Risk Incident Report System/Project",
+    "settings.editor.selected.configurable": "web-ide.project.structure",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5190fe3e-9011-4c95-ad4f-ae005a770814" name="Changes" comment="" />
+      <created>1671702905650</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1671702905650</updated>
+      <workItem from="1671702907078" duration="156000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

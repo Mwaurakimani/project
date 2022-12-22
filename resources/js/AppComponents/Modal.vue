@@ -33,7 +33,7 @@ export default {
 
 <style scoped lang="scss">
 #appModal {
-    //display: none;
+    display: none;
     position: absolute;
     top: 0px;
     left: 0px;

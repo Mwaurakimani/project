@@ -16,6 +16,7 @@ export default {
     height: 100vh;
     display: flex;
     background-color: #faf6f6;
+    overflow: hidden;
 }
 
 </style>

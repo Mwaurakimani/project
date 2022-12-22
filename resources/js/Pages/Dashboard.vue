@@ -82,6 +82,9 @@ import ActionBar from "../AppComponents/PageComponents/ActionBar.vue";
 export default {
     name: "Dashboard",
     components: {ActionBar},
+    provide:{
+        tab_name: 'Dashboard'
+    }
 }
 </script>
 

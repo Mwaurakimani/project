@@ -2,21 +2,10 @@
     "title": "users file",
     "data" : [
         {
-            "first_name": "Admin",
-            "last_name":  "Admin",
+            "username": "Admin",
             "email": "admin@email.com",
-            "designation":  "Administrator",
-            "department_id": "Administrator",
+            "phone": "0700000000",
             "account_type":  "Admin",
-            "password": "password"
-        },
-        {
-            "first_name": "employee",
-            "last_name":  "one",
-            "email": "employeeone@email.com",
-            "designation":  "Manager",
-            "department_id": "Procurement",
-            "account_type":  "Normal",
             "password": "password"
         }
     ]

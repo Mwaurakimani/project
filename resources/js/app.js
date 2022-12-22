@@ -18,6 +18,7 @@ import SideBar from "./AppComponents/LayoutComponents/SideBar.vue";
 import pageHeader from "./AppComponents/LayoutComponents/PageHeader.vue";
 import Layout from "./Layouts/Layout.vue";
 import Modal from "./AppComponents/Modal.vue";
+import {Link} from "@inertiajs/inertia-vue3";
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
@@ -33,7 +34,8 @@ createInertiaApp({
                     SideBar,
                     pageHeader,
                     Layout,
-                    Modal
+                    Modal,
+                    Link
                 }
             })
             .use(plugin)
