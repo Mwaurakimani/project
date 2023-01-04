@@ -9,5 +9,18 @@ Route::post('/Payments/Create', function (postPayment $request) {
 })->name('Payments');
 
 Route::get('/Payments', function () {
-        return Inertia::render('AppPages/Fianance/Payment/index');
-    })->name('Payments');
+
+    $payments = \App\Models\Payment::all();
+
+    $payments = $payments->map(function ($item){
+        $date  = strtotime($item->created_at);
+        $item->date_created = date("d M Y",$date);
+
+
+        return $item;
+    });
+
+    return Inertia::render('AppPages/Fianance/Payment/index', [
+        'payments' => $payments
+    ]);
+})->name('Payments');

@@ -36,7 +36,7 @@
                             <th scope="row">{{ service.id }}</th>
                             <td>{{ service.name }}</td>
                             <td>{{ service.total_active }}</td>
-                            <td class="table-action-cell">
+                            <Link as="td" @click.stop :href="route('UpdateService',service.id)" class="table-action-cell">
                                 <div class="holder">
                                     <div class="view-action">
                                         <img src="/storage/icons/icons8-external-link-96-blue.png"
@@ -45,7 +45,7 @@
                                              title="edit">
                                     </div>
                                 </div>
-                            </td>
+                            </Link>
                         </Link>
                         </tbody>
                     </table>

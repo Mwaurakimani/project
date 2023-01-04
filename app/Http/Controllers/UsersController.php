@@ -20,17 +20,20 @@ class UsersController extends Controller
         dd($status);
     }
 
+
     public function create()
     {
         dd("create View");
     }
 
+//post user
     public function store($data)
     {
         $model = new User();
-        $model = Template::create_model($model,$data);
+        $model = Template::upsert_model($model,$data);
     }
 
+//    get req
     public function show($id)
     {
         $model = new User();
@@ -41,7 +44,7 @@ class UsersController extends Controller
     public function edit()
     {
         $model = new User();
-        $status = Template::create_model($model, [
+        $status = Template::upsert_model($model, [
             'first_name' => 'test',
             'last_name' => 'test',
             'email' => 'test',
@@ -54,10 +57,11 @@ class UsersController extends Controller
         dd($status);
     }
 
+//    put req
     public function update()
     {
         $model = new User();
-        $status = Template::create_model($model, [
+        $status = Template::upsert_model($model, [
             'first_name' => 'test',
             'last_name' => 'test',
             'email' => 'test',
@@ -70,10 +74,11 @@ class UsersController extends Controller
         dd($status);
     }
 
+//    del req
     public function destror()
     {
         $model = new User();
-        $status = Template::create_model($model, [
+        $status = Template::upsert_model($model, [
             'first_name' => 'test',
             'last_name' => 'test',
             'email' => 'test',
@@ -85,7 +90,7 @@ class UsersController extends Controller
 
         dd($status);
     }
-
+//get req /api/users
     public function listUsers()
     {
         $users = User::all();

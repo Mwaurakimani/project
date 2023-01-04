@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('rent_arrears', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('deposit_id');
+            $table->unsignedBigInteger('rent_id');
             $table->unsignedBigInteger('arrears_id');
-            $table->decimal('amount',15,2);
             $table->timestamps();
 
-            $table->foreign('deposit_id')->references('id')->on('deposits');
+            $table->foreign('rent_id')->references('id')->on('rents');
             $table->foreign('arrears_id')->references('id')->on('arrears');
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('rent_arrears');
     }
 };

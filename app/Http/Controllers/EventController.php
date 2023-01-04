@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Logic\Classes\Template;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
@@ -33,9 +34,11 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($data)
     {
-        //
+        $event = new Event();
+
+        Template::upsert_model($event,$data);
     }
 
     /**
@@ -67,9 +70,9 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update($data, Event $event)
     {
-        //
+        Template::upsert_model($event, $data);
     }
 
     /**

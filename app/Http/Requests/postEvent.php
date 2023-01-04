@@ -13,7 +13,7 @@ class postEvent extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class postEvent extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required'],
+            'start_date' => ['required'],
+            'description'=>['required']
         ];
     }
 }

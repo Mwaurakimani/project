@@ -5,7 +5,7 @@
             <div class="page-heading">
                 <h1>Deposits</h1>
             </div>
-            <FinanceActionTab></FinanceActionTab>
+            <FinanceActionTab :data="deposits"></FinanceActionTab>
         </div>
     </Layout>
 
@@ -20,12 +20,7 @@ export default {
         tab_name: 'Deposits'
     },
     name: "Dashboard",
-    props:{
-        users:{
-            type: Array,
-            default: []
-        }
-    },
+    props:['deposits'],
     components: {
         ActionBar,
         FinanceActionTab

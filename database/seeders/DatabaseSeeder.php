@@ -2,6 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Block;
+use App\Models\Deposit;
+use App\Models\House;
+use App\Models\Service;
 use App\Models\User;
 use Box\Spout\Common\Exception\IOException;
 use Box\Spout\Reader\Exception\ReaderNotOpenedException;
@@ -20,29 +24,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->get_excel_document();
-    }
-
-    public function seed_users()
-    {
-
-        $file = file_get_contents($this->path . "/users.json");
-        $data = json_decode($file);
-        $users = $data->data;
-
-
-        foreach ($users as $key => $user_properties) {
-            $user_model = new User();
-
-            foreach ($user_properties as $key => $value) {
-                if ($key == 'password') {
-                    $user_model->{$key} = bcrypt($value);
-                    continue;
-                }
-                $user_model->{$key} = $value;
-            }
-
-            $user_model->save();
-        }
     }
 
     public function get_excel_document()
@@ -72,20 +53,71 @@ class DatabaseSeeder extends Seeder
                                     $user->account_type = $row->getCells()[4]->getValue();
                                     $user->save();
                                 }else{
-                                    echo "exist";
                                     break;
                                 }
                             }
                         }
                         break;
                     case 'Block':
-                        dd("found Block");
+                        foreach ($sheet->getRowIterator() as $key => $row) {
+                            if ($key != 1) {
+                                $block = new Block();
+
+                                $exist = $block->where('name','like',$row->getCells()[1]->getValue())->get();
+
+                                if(count($exist) == 0){
+                                    $block->name = $row->getCells()[0]->getValue();
+                                    $block->location = $row->getCells()[1]->getValue();
+                                    $block->description = $row->getCells()[2]->getValue();
+
+                                    $block->save();
+                                }else{
+                                    break;
+                                }
+                            }
+                        }
                         break;
                     case 'Houses':
-                        dd("found Houses");
+                        foreach ($sheet->getRowIterator() as $key => $row) {
+                            if ($key != 1) {
+                                $house = new House();
+
+                                $exist = $house->where('title','like',$row->getCells()[1]->getValue())->get();
+
+                                if(count($exist) == 0){
+                                    $house->title = $row->getCells()[0]->getValue();
+                                    $house->block_id = $row->getCells()[1]->getValue();
+                                    $house->description = "description";
+                                    $house->rent_amount = $row->getCells()[2]->getValue();
+                                    $house->save();
+                                }else{
+                                    break;
+                                }
+                            }
+                        }
                         break;
                     case 'Services':
-                        dd("found Services");
+                        foreach ($sheet->getRowIterator() as $key => $row) {
+                            if ($key != 1) {
+
+                                $service = new Service();
+
+                                $exist = $service->where('name','like',$row->getCells()[1]->getValue())->get();
+
+
+
+
+                                if(count($exist) == 0){
+                                    $service->name = $row->getCells()[0]->getValue();
+                                    $service->description = $row->getCells()[1]->getValue();
+                                    $service->price = $row->getCells()[2]->getValue();
+
+                                    $service->save();
+                                }else{
+                                    break;
+                                }
+                            }
+                        }
                         break;
                     case 'Events':
                         dd("found Events");
@@ -93,11 +125,18 @@ class DatabaseSeeder extends Seeder
                     case 'Arrears':
                         dd("found Arrears");
                         break;
+                    case 'Deposits':
+                        foreach ($sheet->getRowIterator() as $key => $row) {
+                            if ($key != 1) {
+                                $deposit = new  Deposit();
+                                $deposit->tenant_id = $row->getCells()[0]->getValue();
+                                $deposit->agent_id = $row->getCells()[1]->getValue();
+                                $deposit->amount = $row->getCells()[2]->getValue();
+                                $deposit->save();
+                            }
+                        }
+                        break;
                 }
-
-
-
-
             }
 
         } catch (IOException|ReaderNotOpenedException $e) {

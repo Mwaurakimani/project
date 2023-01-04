@@ -3,9 +3,9 @@
         <div class="main-body">
             <page-header :attrs="$attrs" />
             <div class="page-heading">
-                <h1>Event</h1>
+                <h1>Service</h1>
             </div>
-            <EventActionTab></EventActionTab>
+            <ServiceActionTab></ServiceActionTab>
             <div class="user-pan" >
                 <div class="form-input">
                     <section>
@@ -13,27 +13,26 @@
                             <h2>Title</h2>
                             <div class="form-input-section">
                                 <div class="input-group">
-                                    <label>Title</label>
-                                    <input v-model="eventData.name" >
-                                    <span>{{ $attrs.errors.name }}</span>
-                                </div>
-                                <div class="input-group">
-                                    <label>Event Day</label>
-                                    <input type="date" v-model="eventData.start_date" >
+                                    <label>Name</label>
+                                    <input v-model="serviceData.name" >
                                     <span>{{ $attrs.errors.name }}</span>
                                 </div>
                                 <div class="input-group">
                                     <label>Description</label>
-                                    <textarea v-model="eventData.description" ></textarea>
-                                    <span>{{ $attrs.errors.name }}</span>
+                                    <textarea v-model="serviceData.description" ></textarea>
+                                    <span>{{ $attrs.errors.description }}</span>
+                                </div>
+                                <div class="input-group">
+                                    <label>Price</label>
+                                    <input v-model="serviceData.price" >
+                                    <span>{{ $attrs.errors.price }}</span>
                                 </div>
                             </div>
                         </article>
                     </section>
                     <section>
                         <div class="button-section">
-                            <button class="create" @click=" create_event ">Create</button>
-                            <button class="update">Update</button>
+                            <button class="update" @click="update_service">Update</button>
                             <button class="delete">Delete </button>
                         </div>
                     </section>
@@ -44,29 +43,38 @@
 </template>
 
 <script>
-import EventActionTab from "./Components/EventActionTab.vue";
+import ServiceActionTab from "./Components/ServiceActionTab.vue";
+
 
 export default {
+    props:['service'],
     provide:{
-        tab_name: 'Events'
+        tab_name: 'Services'
     },
     name: "CreateBlock",
     components:{
-        EventActionTab
+        ServiceActionTab
     },
     data() {
         return {
-            eventData:this.$inertia.form({
-                name:null,
-                start_date:null,
-                description:null,
+            serviceData:this.$inertia.form({
+                name:this.service?this.service.name:null,
+                description:this.service?this.service.description:null,
+                price:this.service?this.service.price:null
             })
         }
     },
     methods:{
-        create_event(){
-            this.eventData.post(route('postEvent'));
+        create_service(){
+            this.serviceData.post(route('postService'));
+        },
+        update_service(){
+            this.serviceData.put(route('putService',this.service.id));
         }
     }
 }
 </script>
+
+<style scoped>
+
+</style>

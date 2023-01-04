@@ -5,13 +5,70 @@
             <div class="page-heading">
                 <h1>Dashboard</h1>
             </div>
+            <div class="display-elements">
+                <div class="display-box" style="background-color: #f3c166;">
+                    <h3>Occupants</h3>
+                    <p>100</p>
+                </div>
+                <div class="display-box" style="background-color: #aaf166;">
+                    <h3>Deposits</h3>
+                    <p>100</p>
+                </div>
+                <div class="display-box" style="background-color: #f57e7e;">
+                    <h3>Arrears</h3>
+                    <p>100</p>
+                </div>
+            </div>
+            <div class="filter-bar">
+                <h3>Statistics</h3>
+                <div class="filter-section">
+                    <input type="date">
+                    <p>to</p>
+                    <input type="date">
+                    <button>Apply</button>
+                </div>
+            </div>
+            <chart-section :chartData="chartData" />
         </div>
+        <template v-slot:mobile >
+            <div class="mobile-view">
+                <div class="welcome-bar">
+                    <div class="welcome-details">
+                        <p>Welcome</p>
+                        <h1>Username</h1>
+                    </div>
+                    <div class="account-display">
+                        <div class="account-icon">
+
+                        </div>
+                    </div>
+                </div>
+                <Link href="/mobile/Blocks" as="div" class="block-section">
+                    Blocks
+                </Link>
+                <Link href="/mobile/Houses" as="div" class="block-section mb-[40px]">
+                    Houses
+                </Link>
+                <div class="split-pan w-[95%]  mx-[auto] mb-[20px] h-[100px] flex" style="justify-content: space-between">
+                    <Link href="/mobile/Deposits" as="div" class="block-section" style="margin: 0px;margin-right: 10px">
+                        Deposits
+                    </Link>
+                    <Link href="/mobile/Arrears" as="div" class="block-section" style="margin: 0px">
+                        Arrears
+                    </Link>
+                </div>
+                <Link href="/mobile/Payments" as="div" class="block-section">
+                    Payments
+                </Link>
+
+            </div>
+        </template>
     </Layout>
 
 </template>
 
 <script>
-import ActionBar from "../../../AppComponents/PageComponents/ActionBar.vue";
+import ChartSection from "./ChartSection.vue";
 
 export default {
     name: "Dashboard",
@@ -24,163 +81,21 @@ export default {
             default: []
         }
     },
-    components: {ActionBar},
+    data(){
+        return {
+            chartData:[
+                ['Jan', 10000, 500],
+                ['Feb', 200, 5000],
+                ['Mar', 3000, 10000],
+                ['Apr', 40000, 2250],
+                ['May', 500, 2250],
+            ]
+        }
+    },
+    components: {ChartSection},
 }
 </script>
 
 <style lang="scss" scoped>
-.main-body {
-    width: calc(100vw - 260px);
-    margin-left: 5px;
-
-    div {
-        margin-bottom: 15px;
-    }
-}
-
-.page-heading {
-    display: flex;
-    padding: 10px;
-    justify-content: space-between;
-    margin-bottom: 5px !important;
-
-    h1 {
-        font-size: larger;
-        font-weight: 700;
-    }
-
-    .bread-crumbs {
-        margin-bottom: 0px;
-
-        ol {
-            margin: 0px;
-        }
-    }
-}
-
-.table-bolder {
-    width: 98%;
-    margin: auto;
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 0 6px lightgrey;
-
-    .table-header {
-        width: 100%;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0px 10px;
-        border-bottom: 1px solid #e8e8e8;
-        margin: 0px;
-
-        h4 {
-            font-size: 1.1em;
-            font-weight: 600;
-        }
-
-        .table-pagination {
-            height: 100%;
-            width: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0px;
-
-            * {
-                border: none;
-                margin: 0 2px;
-                border-radius: 8px;
-
-                .pagination {
-                    li {
-                        padding: 0px;
-                        width: 25px;
-
-                        a {
-                            padding: 5px;
-                            width: 25px;
-                            text-align: center;
-                        }
-                    }
-                }
-            }
-
-            .active-page {
-                background-color: dodgerblue;
-                color: white;
-            }
-        }
-    }
-}
-
-.form-action-tab{
-    margin: auto;
-    width: 98%;
-    height: 50px;
-    background-color: white;
-    .action-button-wrapper{
-        width: fit-content;
-        height: 100%;
-        display: flex;
-        align-items: center;
-
-        button{
-            height: 35px;
-            padding: 0px 5px !important;
-            background-color: dodgerblue;
-            color: white;
-            margin: 0px 5px;
-        }
-    }
-}
-
-.table {
-    font-size: 0.9em;
-    margin-bottom: 0px;
-
-    thead {
-        tr {
-            background-color: #e8e8e8;
-            border-bottom: 1px solid #e8e8e8;
-
-            th {
-                font-weight: bolder;
-                border: none;
-                font-size: 0.95em;
-            }
-            th:last-of-type{
-                width: 150px;
-                text-align: center;
-            }
-        }
-    }
-
-    tbody {
-        color: #494949;
-        tr{
-            cursor: pointer;
-            border-bottom: 1px solid #e8e8e8;
-            th{
-                line-height: 30px;
-                border-bottom: none;
-            }
-            td{
-                line-height: 30px;
-                height: 30px;
-                border-bottom: none;
-                vertical-align: center;
-            }
-
-            &:hover{
-                color: white;
-                background-color: #a0caf3;
-            }
-
-        }
-    }
-}
+@import "./index";
 </style>
-

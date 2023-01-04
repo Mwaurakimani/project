@@ -37,7 +37,7 @@ class HouseController extends Controller
     public function store($data)
     {
         $model = new House();
-        Template::create_model($model,$data);
+        Template::upsert_model($model,$data);
     }
 
     /**
@@ -69,9 +69,9 @@ class HouseController extends Controller
      * @param  \App\Models\House  $house
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, House $house)
+    public function update($data, House $house)
     {
-        //
+        Template::upsert_model($house,$data);
     }
 
     /**

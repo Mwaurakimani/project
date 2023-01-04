@@ -39,7 +39,7 @@
                             <td>{{ block.name }}</td>
                             <td>{{ block.location }}</td>
                             <td>{{ block.totalhouses }}</td>
-                            <td>{{ block.occupied }}</td>
+                            <td>{{ block.totalhousesOccunpued }}</td>
                             <td class="table-action-cell">
                                 <div class="holder">
                                     <div class="view-action">

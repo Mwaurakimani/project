@@ -73,7 +73,6 @@
 
         </div>
     </Layout>
-
 </template>
 
 <script>

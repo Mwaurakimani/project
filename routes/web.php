@@ -36,6 +36,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     include_once 'webRoutes/BackEndSystem/index.php';
+    include_once 'Mobile/index.php';
 
 //    Route::get('/dashboard/users', [\App\Http\Controllers\UsersController::class, 'listUsers'])->name('ListUsers');
 //    Route::get('/fetch/users/{id}', [\App\Http\Controllers\UsersController::class, 'getUsers'])->name('apiGetUser');

@@ -38,7 +38,7 @@ class ServiceAreaController extends Controller
     public function store($data)
     {
         $model = new Service();
-        $model = Template::create_model($model,$data);
+        $model = Template::upsert_model($model,$data);
     }
 
     /**

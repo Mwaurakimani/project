@@ -10,5 +10,14 @@ Route::post('/Deposits/Create', function (postDeposit $request) {
 
 
 Route::get('/Deposits', function () {
-        return Inertia::render('AppPages/Fianance/Deposits/index');
-    })->name('Deposits');
+    $deposits = \App\Models\Deposit::all();
+    $deposits = $deposits->map(function ($item, $index){
+        $item->username = \App\Models\User::find($item->tenant_id)->username;
+        $item->date_created = $item->created_at;
+        return $item;
+    });
+
+    return Inertia::render('AppPages/Fianance/Deposits/index',[
+        'deposits'=>$deposits
+    ]);
+})->name('Deposits');

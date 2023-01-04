@@ -33,7 +33,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <Link as="tr" :href="'#'"  v-for="user in users">
+                        <Link as="tr" :href="route('getTenant',[user.id])"  v-for="user in users">
                             <th scope="row">{{ user.id }}</th>
                             <td>{{ user.username }}</td>
                             <td>{{ user.email }}</td>

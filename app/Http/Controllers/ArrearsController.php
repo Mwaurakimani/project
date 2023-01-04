@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Arrera;
+use App\Models\EventArea;
+use App\Models\Invite;
+use App\Models\rent;
+use App\Models\RentArrear;
+use App\Models\ServiceArea;
+use App\Models\Subscription;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ArrearsController extends Controller
@@ -81,5 +88,38 @@ class ArrearsController extends Controller
     public function destroy(Arrera $area)
     {
         //
+    }
+
+    public function get_table_ref($id)
+    {
+        $rent_arr = RentArrear::where('arrears_id',$id)->first();
+        $service_arr = ServiceArea::where('arrears_id',$id)->first();
+        $event_arr = EventArea::where('arrears_id',$id)->first();
+
+        if($rent_arr){
+            $rent = rent::where('id',$rent_arr->rent_id)->first();
+            $Tenant = User::where('id',$rent->user_id)->first();
+            return [
+                'Tenant' => $Tenant,
+                'element' => $rent_arr,
+            ];
+        }else if($service_arr){
+
+            $sub = Subscription::where('id',$service_arr->subscription_id)->first();
+            $Tenant = User::where('id',$sub->user_id)->first();
+
+            return [
+                'Tenant' => $Tenant,
+                'element' => $service_arr,
+            ];
+        }else if ($event_arr){
+            $invite = Invite::where('id',$event_arr->invite_id)->first();
+            $Tenant = User::where('id',$invite->tenant_id)->first();
+
+            return [
+                'Tenant' => $Tenant,
+                'element' => $event_arr,
+            ];
+        }
     }
 }

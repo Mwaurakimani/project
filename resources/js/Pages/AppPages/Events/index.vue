@@ -27,19 +27,33 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Title</th>
-                            <th scope="col">Date Created</th>
+                            <th scope="col">Created</th>
                             <th scope="col">Date due</th>
                             <th scope="col">Invites</th>
                             <th scope="col">Accepted</th>
                             <th scope="col">Rejected</th>
+                            <th scope="col">Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <Link as="tr" :href="'#'"  v-for="block in blocks">
-                            <th scope="row">{{ blcok.id }}</th>
-                            <td>{{ block.name }}</td>
-                            <td>{{ block.location }}</td>
-                            <td>{{ block.totalhouses }}</td>
+                        <Link as="tr" :href="'#'"  v-for="event in events">
+                            <th scope="row">{{ event.id }}</th>
+                            <td>{{ event.title }}</td>
+                            <td>{{ event.date_created }}</td>
+                            <td>{{ event.event_start_date }}</td>
+                            <td>{{0}}</td>
+                            <td>{{0}}</td>
+                            <td>{{0}}</td>
+                            <Link as="td" @click.stop :href="route('updateEvent',[event.id])"  class="table-action-cell">
+                                <div class="holder">
+                                    <div class="view-action">
+                                        <img src="/storage/icons/icons8-external-link-96-blue.png"
+                                             onmouseover="this.src='/storage/icons/icons8-external-link-96.png'"
+                                             onmouseout="this.src='/storage/icons/icons8-external-link-96-blue.png'"
+                                             title="edit">
+                                    </div>
+                                </div>
+                            </Link>
                         </Link>
                         </tbody>
                     </table>
@@ -60,7 +74,7 @@ export default {
     },
     name: "Dashboard",
     props:{
-        users:{
+        events:{
             type: Array,
             default: []
         }
@@ -69,7 +83,6 @@ export default {
         ActionBar,
         EventActionTab
     },
-
 }
 </script>
 

@@ -5,7 +5,79 @@
             <div class="page-heading">
                 <h1>Payments</h1>
             </div>
-            <FinanceActionTab></FinanceActionTab>
+            <div class="form-action-tab">
+                <div class="action-button-wrapper">
+                    <Link as="button" :href="'/Deposits'">Deposits</Link>
+                    <Link as="button" :href="'/Payments'">Payments</Link>
+                    <Link as="button" :href="'/Arrears'">Arrears</Link>
+                </div>
+            </div>
+            <div class="user-pan">
+                <div class="holder">
+                    <div class="table-bolder">
+                        <div class="table-header">
+                            <h4>Payments</h4>
+                        </div>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Deposit ID</th>
+                                <th scope="col">Arrears ID</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col" style="text-align: start">Time Created</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr :href="'#'"  v-for="item in payments">
+                                <th scope="col"> {{ item.id }}</th>
+                                <td>{{ item.deposit_id }}</td>
+                                <td>{{ item.arrears_id }}</td>
+                                <td>Ksh {{ item.amount }}</td>
+                                <td>{{ item.date_created }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="input-form">
+                    <h3>Payment</h3>
+                    <div class="input-2-split">
+                        <div class="inp_grp">
+                            <label>Deposit Reference</label>
+                            <input>
+                        </div>
+                        <div class="inp_grp">
+                            <label>Arrears Reference</label>
+                            <input>
+                        </div>
+                    </div>
+                    <div class="input-2-split">
+                        <div class="inp_grp">
+                            <label>Amount</label>
+                            <input>
+                        </div>
+                    </div>
+                    <div class="input-2-split">
+                        <div class="inp_grp">
+                            <label>Notes</label>
+                            <textarea></textarea>
+                        </div>
+                    </div>
+                    <div class="input-2-split">
+                        <div class="inp_grp">
+                            <button>Save</button>
+                        </div>
+                        <div class="inp_grp">
+                            <button>Delete</button>
+                        </div>
+                        <div class="inp_grp">
+                            <button>Clear</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </Layout>
 
@@ -13,22 +85,15 @@
 
 <script>
 import ActionBar from "../../../../AppComponents/PageComponents/ActionBar.vue";
-import FinanceActionTab from "../Components/FinanceActionTab.vue";
 
 export default {
     provide:{
         tab_name: 'Payments'
     },
     name: "Dashboard",
-    props:{
-        users:{
-            type: Array,
-            default: []
-        }
-    },
+    props:['payments'],
     components: {
         ActionBar,
-        FinanceActionTab
     },
 
 
@@ -36,156 +101,44 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main-body {
-    width: calc(100vw - 260px);
-    margin-left: 5px;
+@import "index";
 
-    div {
-        margin-bottom: 15px;
+.input-form{
+    h3{
+        padding: 10px;
+        font-size: 1.4em;
+        font-weight: bolder;
     }
-}
-
-.page-heading {
-    display: flex;
-    padding: 10px;
-    justify-content: space-between;
-    margin-bottom: 5px !important;
-
-    h1 {
-        font-size: larger;
-        font-weight: 700;
-    }
-
-    .bread-crumbs {
-        margin-bottom: 0px;
-
-        ol {
-            margin: 0px;
-        }
-    }
-}
-
-.table-bolder {
-    width: 98%;
-    margin: auto;
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 0 6px lightgrey;
-
-    .table-header {
+    .input-2-split{
         width: 100%;
-        height: 50px;
         display: flex;
-        align-items: center;
+        align-items: start;
         justify-content: space-between;
-        padding: 0px 10px;
-        border-bottom: 1px solid #e8e8e8;
-        margin: 0px;
-
-        h4 {
-            font-size: 1.1em;
-            font-weight: 600;
-        }
-
-        .table-pagination {
-            height: 100%;
-            width: 300px;
+        margin-bottom: 0px;
+        .inp_grp{
+            width: 100%;
+            padding: 15px;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0px;
-
-            * {
-                border: none;
-                margin: 0 2px;
-                border-radius: 8px;
-
-                .pagination {
-                    li {
-                        padding: 0px;
-                        width: 25px;
-
-                        a {
-                            padding: 5px;
-                            width: 25px;
-                            text-align: center;
-                        }
-                    }
-                }
+            flex-direction: column;
+            label{
+                height: 40px;
+                width: 100%;
             }
-
-            .active-page {
-                background-color: dodgerblue;
+            input{
+                width: 100%;
+                height: 40px;
+                border: 1px solid lightgrey;
+                padding-left: 5px;
+            }
+            textarea{
+                border: 1px solid lightgrey;
+                padding-left: 5px;
+                height: 150px;
+            }
+            button{
+                background-color: cornflowerblue;
                 color: white;
             }
-        }
-    }
-}
-
-.form-action-tab{
-    margin: auto;
-    width: 98%;
-    height: 50px;
-    background-color: white;
-    .action-button-wrapper{
-        width: fit-content;
-        height: 100%;
-        display: flex;
-        align-items: center;
-
-        button{
-            height: 35px;
-            padding: 0px 5px !important;
-            background-color: dodgerblue;
-            color: white;
-            margin: 0px 5px;
-        }
-    }
-}
-
-.table {
-    font-size: 0.9em;
-    margin-bottom: 0px;
-
-    thead {
-        tr {
-            background-color: #e8e8e8;
-            border-bottom: 1px solid #e8e8e8;
-
-            th {
-                font-weight: bolder;
-                border: none;
-                font-size: 0.95em;
-            }
-            th:last-of-type{
-                width: 150px;
-                text-align: center;
-            }
-        }
-    }
-
-    tbody {
-        color: #494949;
-        tr{
-            cursor: pointer;
-            border-bottom: 1px solid #e8e8e8;
-            th{
-                line-height: 30px;
-                border-bottom: none;
-            }
-            td{
-                line-height: 30px;
-                height: 30px;
-                border-bottom: none;
-                vertical-align: center;
-            }
-
-            &:hover{
-                color: white;
-                background-color: #a0caf3;
-            }
-
         }
     }
 }

@@ -27,12 +27,17 @@
                         <th scope="col">ID</th>
                         <th scope="col">Tenant</th>
                         <th scope="col">Amount</th>
-                        <th scope="col">Date Created</th>
+                        <th scope="col">Time Created</th>
+                        <th scope="col">Description</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <Link as="tr" :href="'#'"  v-for="block in blocks">
-                        <th scope="row">{{ blcok.id }}</th>
+                    <Link as="tr" :href="'#'"  v-for="item in data">
+                        <th scope="col"> {{ item.id }} </th>
+                        <td>{{ item.username }}</td>
+                        <td>Ksh {{ item.amount }}</td>
+                        <td>{{ item.date_created }}</td>
+                        <td>{{ item.description }}</td>
                     </Link>
                     </tbody>
                 </table>
@@ -43,6 +48,7 @@
 <script>
 export default {
     name: 'FinanceActionTab',
+    props:['data']
 }
 </script>
 

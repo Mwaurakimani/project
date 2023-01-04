@@ -26,6 +26,7 @@
                         <thead>
                         <tr>
                             <th scope="col">ID</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Block</th>
                             <th scope="col">Tenants</th>
                             <th scope="col">Action</th>
@@ -34,16 +35,17 @@
                         <tbody>
                         <Link as="tr" :href="'#'"  v-for="house in houses">
                             <th scope="row">{{ house.id }}</th>
+                            <td>{{ house.title }}</td>
                             <td>{{ house.block.name }}</td>
                             <td>{{ house.tenant ? house.tenant.username : 'No Tenant' }}</td>
                             <td class="table-action-cell">
-                                <div class="holder">
-                                    <div class="view-action">
+                                <div @click.stop="" class="holder">
+                                    <Link as="div"  :href="route('updateHouse',[house.id])" class="view-action">
                                         <img src="/storage/icons/icons8-external-link-96-blue.png"
                                              onmouseover="this.src='/storage/icons/icons8-external-link-96.png'"
                                              onmouseout="this.src='/storage/icons/icons8-external-link-96-blue.png'"
                                              title="edit">
-                                    </div>
+                                    </Link>
                                 </div>
                             </td>
                         </Link>

@@ -22,14 +22,22 @@ Route::post('/Blocks/Create', function (postBlock $request) {
 Route::get('/Blocks', function () {
     $blocks = \App\Models\Block::all();
 
-
     $blocks = $blocks->map(function ($items, $keys) {
         $items->totalhouses = count($items->houses);
-        $items->occupied = 0;
+        $items->totalhousesOccunpued = 0;
+
+        $items->houses->map(function ($house,$key) use ($items){
+            $active_tenant =count( \App\Models\rent::where('house_id',$house->id)->where('end_date',null)->get());
+
+            if($active_tenant > 0){
+                $items->totalhousesOccunpued = $items->totalhousesOccunpued + 1;
+            }
+        });
+
         return $items;
     });
 
-    return Inertia::render('AppPages/Blocks/index',[
+    return Inertia::render('AppPages/Blocks/index', [
         'blocks' => $blocks
     ]);
 })->name('Blocks');

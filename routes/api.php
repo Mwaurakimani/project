@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('user',\App\Http\Controllers\UsersController::class);
 
+require_once 'ServiceApi/service.php';
+

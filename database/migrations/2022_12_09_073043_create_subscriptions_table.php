@@ -17,18 +17,16 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('service_id');
             $table->unsignedBigInteger('house_id');
-            $table->boolean('recurring');
-            $table->string('recurring_period');
-            $table->string('recurring_units');
-            $table->string('unit_price');
-            $table->text('note');
+            $table->unsignedBigInteger('user_id');
+            $table->text('note')->nullable();
             $table->date('subscription_start_date');
-            $table->date('subscription_end_date');
+            $table->date('subscription_end_date')->nullable();
             $table->timestamps();
 
 
             $table->foreign('service_id')->references('id')->on('services');
             $table->foreign('house_id')->references('id')->on('houses');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

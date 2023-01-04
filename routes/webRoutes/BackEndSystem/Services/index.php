@@ -10,6 +10,13 @@ Route::get('/Services/Create', function () {
 })->name('CreateServices');
 
 
+
+Route::get('/Services/Update/{id}', function (\Illuminate\Http\Request $request,\App\Models\Service $id) {
+    return Inertia::render('AppPages/Services/UpdateService',[
+        'service' => $id
+    ]);
+})->name('UpdateService');
+
 Route::post('/Services/Create', function (postService $request) {
     $data = (array)json_decode($request->getContent());
 
@@ -28,5 +35,21 @@ Route::get('/Services', function () {
         'services' => $services
     ]);
 })->name('Services');
+
+Route::put('/Services/Update/{id}', function (postService $request,\App\Models\Service $id) {
+    $service = $id;
+
+    $service->name = $request['name'];
+    $service->description = $request['description'];
+    $service->price = $request['price'];
+
+    $service->save();
+
+    return redirect()->route('Services');
+
+})->name('putService');
+
+
+
 
 

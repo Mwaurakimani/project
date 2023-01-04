@@ -38,7 +38,7 @@ class BlockController extends Controller
     public function store($data)
     {
         $model = new Block();
-        Template::create_model($model,$data);
+        Template::upsert_model($model,$data);
     }
 
     /**

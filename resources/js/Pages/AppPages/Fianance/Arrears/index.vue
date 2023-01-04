@@ -5,7 +5,7 @@
             <div class="page-heading">
                 <h1>Arrears</h1>
             </div>
-            <FinanceActionTab></FinanceActionTab>
+            <FinanceActionTab :data="arrears" ></FinanceActionTab>
         </div>
     </Layout>
 
@@ -19,9 +19,9 @@ export default {
     provide:{
         tab_name: 'Arrears'
     },
-    name: "Dashboard",
+    name: "Arrears",
     props:{
-        users:{
+        arrears:{
             type: Array,
             default: []
         }
