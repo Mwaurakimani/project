@@ -22,3 +22,15 @@ Route::resource('user',\App\Http\Controllers\UsersController::class);
 
 require_once 'ServiceApi/service.php';
 
+Route::get ("routepath", function(){
+
+    return Array(
+
+    	"Title" => "dummy title", 
+    	"Real_Data" => "This is the real data"
+
+
+     );
+
+
+});
