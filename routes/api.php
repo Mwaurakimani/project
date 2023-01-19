@@ -38,12 +38,23 @@ Route::get("routepath", function () {
 
 Route::post('/authenticateUser', function (Request $request) {
     $email = $request['email'];
+    $password = $request['password'];
 
-    $user = User::where('email', $email)->get();
+    if(\Illuminate\Support\Facades\Auth::attempt(array(
+        'email' => $email,
+        'password' => $password
+    ))){
+        return array(
+          'status' => 0,
+          'user' => User::where('email',$request['email'])->get()
+        );
+    }else{
+        return array(
+            'status' => 1,
+            'user' => 'error'
+        );
+    }
 
-    return (
-        $user
-    );
 });
 
 
