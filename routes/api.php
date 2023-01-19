@@ -36,5 +36,8 @@ Route::get ("routepath", function(){
 });
 
 Route::post('/authenticateUser',function ( Request $request){
-    dd($request['email'].$request['password']);
+    return(array(
+        $request['email'],
+        $request['password']
+    ));
 });
