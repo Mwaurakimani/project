@@ -46,12 +46,11 @@ Route::post('/authenticateUser', function (Request $request) {
     ))){
         return array(
           'status' => 0,
-          'user' => User::where('email',$request['email'])->get()
+          'responseData' => User::where('email',$request['email'])->get()
         );
     }else{
         return array(
             'status' => 1,
-            'user' => 'error'
         );
     }
 
