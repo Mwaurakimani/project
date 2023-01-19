@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,26 +19,31 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('user',\App\Http\Controllers\UsersController::class);
+Route::resource('user', \App\Http\Controllers\UsersController::class);
 
 require_once 'ServiceApi/service.php';
 
-Route::get ("routepath", function(){
+Route::get("routepath", function () {
 
-    return Array(
+    return array(
 
-    	"Title" => "dummy title",
-    	"Real_Data" => "This is the real data"
+        "Title" => "dummy title",
+        "Real_Data" => "This is the real data"
 
 
-     );
+    );
 
 
 });
 
-Route::post('/authenticateUser',function ( Request $request){
-    return(array(
-        "email"=>$request['email'],
-        "password" => ['password']
-    ));
+Route::post('/authenticateUser', function (Request $request) {
+    $email = $request['email'];
+
+    $user = User::where('email', $email)->get();
+
+    return (
+        $user
+    );
 });
+
+
