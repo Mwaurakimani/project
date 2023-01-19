@@ -26,11 +26,16 @@ Route::get ("routepath", function(){
 
     return Array(
 
-    	"Title" => "dummy title", 
+    	"Title" => "dummy title",
     	"Real_Data" => "This is the real data"
 
 
      );
 
 
+});
+
+Route::post('/authenticateUser',function (){
+    echo "hi";
+    return;
 });

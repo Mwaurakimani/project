@@ -18,10 +18,6 @@ Route::get('/mobile/Payments',function (){
     return \Inertia\Inertia::render('MobilePages/Payment');
 });
 
-
-
-
-
 //Search deposit details
 Route::post('mobile/getDeposit',function (\Illuminate\Http\Request $request){
     $deposit = \App\Models\Deposit::where('id',$request['deposit_id'])->first();
@@ -65,3 +61,5 @@ Route::post('postMobileTransaction',function (\Illuminate\Http\Request $request)
         }
     }
 })->name('postMobileTransaction');
+
+
