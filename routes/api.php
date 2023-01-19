@@ -45,8 +45,7 @@ Route::post('/authenticateUser', function (Request $request) {
         'password' => $password
     ))){
         return array(
-          'status' => 0,
-          'responseData' => User::where('email',$request['email'])->get()
+            'status' => User::where('email',$request['email'])->get()
         );
     }else{
         return array(
