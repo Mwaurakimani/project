@@ -48,11 +48,18 @@ Route::post('/authenticateUser', function (Request $request) {
             'status' => User::where('email',$request['email'])->get()->first()
         );
     }else{
-        return array(
-            'status' => 1,
-        );
+        return response('Hello World', 200)
+            ->header('Content-Type', 'text/plain');
     }
 
 });
 
+Route::get('/getarrears/{id}', function (Request $request, $id) {
+    $rent = \App\Models\rent::where('user_id',$id)->first();
 
+    if($rent){
+        $rentArrears = \App\Models\RentArrear::where('rent_id',$rent->id)->get();
+
+        dump($rentArrears);
+    }
+});
