@@ -76,19 +76,19 @@ Route::get('/getarrears/{id}', function (Request $request, $id) {
         }
     }
 
-    dd($arrears);
+    return($arrears);
 
 });
 
 Route::get('getArrearsByID/{id}', function (Request $request, $id) {
     $arrears = \App\Models\Arrears::where('id',$id)->get();
-    dd($arrears);
+    return($arrears);
 });
 
 Route::get('listServices/{id}', function (Request $request, $id) {
     $services = \App\Models\Service::all();
 
     foreach ($services as $key => $value){
-        dd($value);
+        return($value);
     }
 });
