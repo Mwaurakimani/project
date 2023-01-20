@@ -86,5 +86,9 @@ Route::get('getArrearsByID/{id}', function (Request $request, $id) {
 });
 
 Route::get('listServices/{id}', function (Request $request, $id) {
-    
+    $services = \App\Models\Service::all();
+
+    foreach ($services as $key => $value){
+        dd($value);
+    }
 });
