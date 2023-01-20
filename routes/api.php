@@ -57,9 +57,34 @@ Route::post('/authenticateUser', function (Request $request) {
 Route::get('/getarrears/{id}', function (Request $request, $id) {
     $rent = \App\Models\rent::where('user_id',$id)->first();
 
+    $arrears = [];
+
     if($rent){
         $rentArrears = \App\Models\RentArrear::where('rent_id',$rent->id)->get();
 
-        dump($rentArrears);
+        if($rentArrears){
+            $rentArrears->map(function ($item , $key){
+                $arrears = \App\Models\Arrears::where('id',$item->id)->first();
+                $item['arrear'] = $arrears;
+
+                return $item;
+            });
+        }
+
+        foreach ($rentArrears as $key => $value){
+            array_push($arrears,$value->arrear);
+        }
     }
+
+    dd($arrears);
+
+});
+
+Route::get('getArrearsByID/{id}', function (Request $request, $id) {
+    $arrears = \App\Models\Arrears::where('id',$id)->get();
+    dd($arrears);
+});
+
+Route::get('listServices/{id}', function (Request $request, $id) {
+    
 });
