@@ -136,7 +136,71 @@ Route::get('/viewService/{id}', function (Request $request, $id) {
     return $services;
 });
 
-Route::post('/userAccountDetails', function (Request $request) {
+Route::post('/userAccountDetails/home', function (Request $request) {
+    $user = User::where('id',$request['user_id'])->first();
+
+    $date  = strtotime($user->created_at);
+    $user->date_created = date("d M Y",$date);
+
+
+    $rent_details = \App\Models\rent::where('user_id',$user->id)->where('end_date',null)->first();
+    $house = null;
+    $subscriptions = \App\Models\Subscription::where('user_id',$user->id)
+        ->where('subscription_end_date',null)->get();
+
+    $subscriptions = $subscriptions->map(function ($item , $index){
+        $item->servce = \App\Models\Service::where('id',$item->service_id)->first();
+
+        $item->date_created = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$item->created_at)->format('Y-m-d');
+
+        return $item;
+    });
+    if($rent_details){
+        $house = \App\Models\House::where('id',$rent_details->house_id)->first();
+    }
+    $page_data = [
+        'services' => get_all_services(),
+        'total_deposit' => get_deposit($user->id),
+        'all_arrears' => get_all_arrears($user->id),
+        'invites'=>get_all_invites($user->id)
+    ];
+
+
+    return $house;
+});
+
+Route::post('/userAccountDetails/split', function (Request $request) {
+    $user = User::where('id',$request['user_id'])->first();
+
+    $date  = strtotime($user->created_at);
+    $user->date_created = date("d M Y",$date);
+
+
+    $rent_details = \App\Models\rent::where('user_id',$user->id)->where('end_date',null)->first();
+    $house = null;
+    $subscriptions = \App\Models\Subscription::where('user_id',$user->id)
+        ->where('subscription_end_date',null)->get();
+
+    $subscriptions = $subscriptions->map(function ($item , $index){
+        $item->servce = \App\Models\Service::where('id',$item->service_id)->first();
+
+        $item->date_created = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$item->created_at)->format('Y-m-d');
+
+        return $item;
+    });
+    if($rent_details){
+        $house = \App\Models\House::where('id',$rent_details->house_id)->first();
+    }
+    $page_data = [
+        'total_deposit' => get_deposit($user->id)['count'][0],
+        'all_arrears' => get_all_arrears($user->id)['count'],
+    ];
+
+
+    return $page_data;
+});
+
+Route::post('/userAccountDetails/', function (Request $request) {
     $user = User::where('id',$request['user_id'])->first();
 
     $date  = strtotime($user->created_at);
