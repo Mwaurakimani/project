@@ -44,9 +44,7 @@ Route::post('/authenticateUser', function (Request $request) {
         'email' => $email,
         'password' => $password
     ))){
-        return array(
-            User::where('email',$request['email'])->get()->first()
-        );
+        return User::where('email',$request['email'])->get()->first();
     }else{
         return response('1', 200)
             ->header('Content-Type', 'text/plain');
