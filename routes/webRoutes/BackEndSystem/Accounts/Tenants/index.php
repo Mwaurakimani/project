@@ -174,7 +174,6 @@ function get_all_arrears($id){
     );
 }
 
-
 function get_all_invites($id){
     $invites = \App\Models\Invite::where('tenant_id',$id)->orderBy('created_at','ASC')->get();
 

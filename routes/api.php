@@ -54,9 +54,10 @@ Route::post('/authenticateUser', function (Request $request) {
 
 });
 
-Route::get('/getarrears/{id}', function (Request $request, $id) {
+Route::get('/getArrearsByID/{id}', function (Request $request, $id) {
     $rent = \App\Models\rent::where('user_id',$id)->first();
 
+    dd("hi");
     $arrears = [];
 
     if($rent){
@@ -65,6 +66,9 @@ Route::get('/getarrears/{id}', function (Request $request, $id) {
         if($rentArrears){
             $rentArrears->map(function ($item , $key){
                 $arrears = \App\Models\Arrears::where('id',$item->id)->first();
+
+                dd($arrears);
+
                 $item['arrear'] = $arrears;
 
                 return $item;
@@ -89,6 +93,60 @@ Route::get('listServices/{id}', function (Request $request, $id) {
     $services = \App\Models\Service::all();
 
     foreach ($services as $key => $value){
-        return($value);
+        $services_id = $value->id;
+
+        $subscription = \App\Models\Subscription::where('service_id', $services_id)
+            ->where('user_id',$id)
+            ->where('subscription_end_date',null)
+            ->get();
+
+        if(count($subscription) > 0){
+            $value['active'] = true;
+        }else{
+            $value['active'] = false;
+        }
+
+        $services[$key] = $value;
     }
+
+    return $services;
+});
+
+Route::get('userAccountDetails/{id}', function (Request $request,User $id) {
+    $user = $id;
+
+    $date  = strtotime($user->created_at);
+    $user->date_created = date("d M Y",$date);
+
+
+    $rent_details = \App\Models\rent::where('user_id',$user->id)->where('end_date',null)->first();
+    $house = null;
+    $subscriptions = \App\Models\Subscription::where('user_id',$user->id)
+        ->where('subscription_end_date',null)->get();
+
+    $subscriptions = $subscriptions->map(function ($item , $index){
+        $item->servce = \App\Models\Service::where('id',$item->service_id)->first();
+
+        $item->date_created = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$item->created_at)->format('Y-m-d');
+
+        return $item;
+    });
+    if($rent_details){
+        $house = \App\Models\House::where('id',$rent_details->house_id)->first();
+    }
+    $page_data = [
+        'services' => get_all_services(),
+        'total_deposit' => get_deposit($user->id),
+        'all_arrears' => get_all_arrears($user->id),
+        'invites'=>get_all_invites($user->id)
+    ];
+
+
+    return [
+        'tenant'=>$user,
+        'rent_details' => $rent_details,
+        'house' =>$house,
+        'subscriptions' => $subscriptions,
+        'page_data' => $page_data
+    ];
 });
