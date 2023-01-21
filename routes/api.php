@@ -192,7 +192,7 @@ Route::post('/userAccountDetails/split', function (Request $request) {
         $house = \App\Models\House::where('id',$rent_details->house_id)->first();
     }
     $page_data = [
-        'total_deposit' => get_deposit($user->id)['count'][0],
+        'total_deposit' => get_deposit($user->id)['count'][0]->sub_total,
         'all_arrears' => get_all_arrears($user->id)['count'],
     ];
 
