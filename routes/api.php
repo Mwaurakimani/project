@@ -136,8 +136,8 @@ Route::get('/viewService/{id}', function (Request $request, $id) {
     return $services;
 });
 
-Route::get('userAccountDetails/{id}', function (Request $request,User $id) {
-    $user = $id;
+Route::post('/userAccountDetails', function (Request $request) {
+    $user = User::where('id',$request['user_id'])->first();
 
     $date  = strtotime($user->created_at);
     $user->date_created = date("d M Y",$date);
@@ -174,3 +174,4 @@ Route::get('userAccountDetails/{id}', function (Request $request,User $id) {
         'page_data' => $page_data
     ];
 });
+
