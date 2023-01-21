@@ -54,10 +54,12 @@ Route::post('/authenticateUser', function (Request $request) {
 
 });
 
-Route::get('/getArrearsByID/{id}', function (Request $request, $id) {
+Route::post('/getArrearsByID', function (Request $request) {
+    $id = $request['user_id'];
+
+
     $rent = \App\Models\rent::where('user_id',$id)->first();
 
-    dd("hi");
     $arrears = [];
 
     if($rent){
@@ -66,8 +68,6 @@ Route::get('/getArrearsByID/{id}', function (Request $request, $id) {
         if($rentArrears){
             $rentArrears->map(function ($item , $key){
                 $arrears = \App\Models\Arrears::where('id',$item->id)->first();
-
-                dd($arrears);
 
                 $item['arrear'] = $arrears;
 
@@ -84,12 +84,35 @@ Route::get('/getArrearsByID/{id}', function (Request $request, $id) {
 
 });
 
-Route::get('getArrearsByID/{id}', function (Request $request, $id) {
+Route::get('/getSingleArrearsByID/{id}', function (Request $request, $id) {
     $arrears = \App\Models\Arrears::where('id',$id)->get();
     return($arrears);
 });
 
-Route::get('listServices/{id}', function (Request $request, $id) {
+Route::get('/listServices/{id}', function (Request $request, $id) {
+    $services = \App\Models\Service::all();
+
+    foreach ($services as $key => $value){
+        $services_id = $value->id;
+
+        $subscription = \App\Models\Subscription::where('service_id', $services_id)
+            ->where('user_id',$id)
+            ->where('subscription_end_date',null)
+            ->get();
+
+        if(count($subscription) > 0){
+            $value['active'] = true;
+        }else{
+            $value['active'] = false;
+        }
+
+        $services[$key] = $value;
+    }
+
+    return $services;
+});
+
+Route::get('/viewService/{id}', function (Request $request, $id) {
     $services = \App\Models\Service::all();
 
     foreach ($services as $key => $value){
