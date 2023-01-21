@@ -57,7 +57,6 @@ Route::post('/authenticateUser', function (Request $request) {
 Route::post('/getArrearsByID', function (Request $request) {
     $id = $request['user_id'];
 
-
     $rent = \App\Models\rent::where('user_id',$id)->first();
 
     $arrears = [];
@@ -84,7 +83,9 @@ Route::post('/getArrearsByID', function (Request $request) {
 
 });
 
-Route::get('/getSingleArrearsByID/{id}', function (Request $request, $id) {
+Route::get('/getSingleArrearsByID/{id}', function (Request $request) {
+    $id = $request['arrears_id'];
+
     $arrears = \App\Models\Arrears::where('id',$id)->get();
     return($arrears);
 });
