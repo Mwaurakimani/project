@@ -48,7 +48,7 @@ Route::post('/authenticateUser', function (Request $request) {
             'status' => User::where('email',$request['email'])->get()->first()
         );
     }else{
-        return response('Hello World', 200)
+        return response('1', 200)
             ->header('Content-Type', 'text/plain');
     }
 
@@ -83,7 +83,7 @@ Route::post('/getArrearsByID', function (Request $request) {
 
 });
 
-Route::get('/getSingleArrearsByID/{id}', function (Request $request) {
+Route::get('/getSingleArrearsByID', function (Request $request) {
     $id = $request['arrears_id'];
 
     $arrears = \App\Models\Arrears::where('id',$id)->get();
@@ -91,6 +91,8 @@ Route::get('/getSingleArrearsByID/{id}', function (Request $request) {
 });
 
 Route::get('/listServices/{id}', function (Request $request, $id) {
+    $id = $request['service_id'];
+
     $services = \App\Models\Service::all();
 
     foreach ($services as $key => $value){
