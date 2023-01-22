@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('tenant_id');
             $table->unsignedBigInteger('agent_id');
-            $table->unsignedBigInteger('deposit_mode')->nullable();
-            $table->unsignedBigInteger('reference_id')->nullable();
-            $table->unsignedBigInteger('description')->nullable();
+            $table->string('deposit_mode')->nullable();
+            $table->string('reference_id')->nullable();
+            $table->text('description')->nullable();
             $table->decimal('amount',15,2);
             $table->timestamps();
 

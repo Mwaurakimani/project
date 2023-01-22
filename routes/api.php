@@ -239,3 +239,19 @@ Route::post('/userAccountDetails/', function (Request $request) {
     ];
 });
 
+Route::post('/addDeposit', function (Request $request) {
+
+    $deposit = new \App\Models\Deposit();
+
+    $deposit->tenant_id = $request['id'];
+    $deposit->agent_id = 1;
+    $deposit->deposit_mode = $request['depositMode'];
+    $deposit->reference_id = $request['referenceId'];
+    $deposit->description = $request['description'];
+    $deposit->amount = (float) $request['amount'];
+
+    $deposit->save();
+
+    return 1;
+});
+
