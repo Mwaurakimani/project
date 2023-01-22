@@ -88,8 +88,8 @@ Route::get('/getSingleArrearsByID', function (Request $request) {
     return($arrears);
 });
 
-Route::get('/listServices/{id}', function (Request $request, $id) {
-    $id = $request['service_id'];
+Route::post('/listServices', function (Request $request) {
+    $id = $request['user_id'];
 
     $services = \App\Models\Service::all();
 
