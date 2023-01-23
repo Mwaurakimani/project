@@ -255,3 +255,44 @@ Route::post('/addDeposit', function (Request $request) {
     return 1;
 });
 
+Route::post('/updateService', function (Request $request) {
+    $service = $request['service_id'];
+    $status = $request['status'];
+
+    $user = User::where('id',$request['user_id'])->first();
+
+    $rent = \App\Models\Rent::where('user_id',$user->id)->first();
+
+    $house = \App\Models\House::where('id',$rent->house_id)->first();
+
+    $sub = \App\Models\Subscription::where('service_id',$service)
+        ->where('user_id',$request['user_id'])
+        ->where('subscription_end_date',null)
+        ->get();
+
+
+    if(count($sub) > 0){
+        $sub = $sub[0];
+    }else{
+        $sub = new \App\Models\Subscription();
+    }
+
+    if($request['status'] == 'true'){
+        $sub->service_id = $service;
+        $sub->house_id = $house->id;
+        $sub->user_id = $request['user_id'];
+        $sub->note = "created service";
+        $sub->subscription_start_date = date("Y-m-d");
+
+        $sub->save();
+    }else{
+        if(isset($sub->id)){
+            $sub->subscription_end_date = date("Y-m-d");
+
+            $sub->save();
+        }
+    }
+    
+    return 1;
+});
+
