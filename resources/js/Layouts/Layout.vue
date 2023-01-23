@@ -21,6 +21,9 @@ export default {
     background-color: #faf6f6;
     overflow: hidden;
 }
+.mobile-display{
+    display: none;
+}
 
 @media only screen and (max-width: 425px){
     html{
@@ -33,6 +36,7 @@ export default {
     .mobile-display{
         width: 100vw;
         height: 100vh;
+        display: block;
     }
 }
 

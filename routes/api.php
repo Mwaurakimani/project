@@ -292,7 +292,7 @@ Route::post('/updateService', function (Request $request) {
             $sub->save();
         }
     }
-    
+
     return 1;
 });
 

@@ -81,11 +81,7 @@ export default {
                     link:'Deposits',
                     sub:true
                 },
-                {
-                    title:'Payments',
-                    link:'Payments',
-                    sub:true
-                },
+
             ]
         }
     },
