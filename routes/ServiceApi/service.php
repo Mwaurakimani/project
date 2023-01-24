@@ -9,3 +9,5 @@ Route::get('receives/service',function(){
 Route::get('generateArrears',function(){
     (new \App\Http\Controllers\SystemController())->generate_arrears();
 });
+
+//this is it
